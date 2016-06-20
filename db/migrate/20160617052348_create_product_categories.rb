@@ -1,7 +1,8 @@
 class CreateProductCategories < ActiveRecord::Migration
   def change
-    create_table :product_categories do |t|
-
+    create_table :products_categories do |t|
+      t.references  :product, index: true
+      t.references  :category, index: true
       t.timestamps
     end
   end
