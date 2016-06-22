@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user=User.find(params[:id])
+    user.carts.destroy_all
     @user.destroy
     redirect_to users_path
   end
@@ -30,7 +31,9 @@ class UsersController < ApplicationController
   end
   def create
     @user=User.new(user_params)
+
     if @user.save
+      generate_cart(@user)
       redirect_to @user
     else
       render 'new'
@@ -39,5 +42,8 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :address, :city, :state, :phone ,:password)
   end
-
+  private
+  def generate_cart(user)
+    @cart = user.carts.create
+  end
 end

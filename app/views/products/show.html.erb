@@ -1,9 +1,9 @@
 <h3><%= @product.name%></h3>
 
-<p> <b>Description:<b>  <%= @product.description%></p>
+<p> <b>Description:</b>  <%= @product.description%></p>
 
-<p><b>Image url:<b>     <%= @product.image_url %> </p>
+<p><b>Image url:</b>     <%= @product.image_url %> </p>
 
-<p>Price: <%= @product.price%></p>
-
+<p><b>Price: </b> <%= @product.price%></p>
+<%= button_to 'Add to Cart', cart_details_path(product_id: product) %>
 <%= link_to 'Back', products_path %>

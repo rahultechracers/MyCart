@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  get 'orders/new'
+  get 'cart_details/index'
 
-  get 'orders/edit'
+  get 'cart_details/new'
 
-  get 'orders/destroy'
+  get 'cart_details/show'
+
+  get 'cart_details/destroy'
+  post 'cart_details'=> 'cart_details#create'
 
   get 'orders/show'
-
+  root 'products#index'
   resources :users
   resources :products
   # The priority is based upon order of creation: first created -> highest priority.
