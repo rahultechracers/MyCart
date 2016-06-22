@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  get "log_out" => "session#destroy", :as => "log_out"
+  
+  get "log_in" => "session#new", :as => "log_in"
+  
+  get "sign_up" => "users#new", :as => "sign_up"
+  
   get 'cart_details/index'
 
   get 'cart_details/new'
@@ -10,6 +17,7 @@ Rails.application.routes.draw do
 
   get 'orders/show'
   root 'products#index'
+  resources :session
   resources :users
   resources :products
   # The priority is based upon order of creation: first created -> highest priority.

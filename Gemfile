@@ -7,6 +7,7 @@ gem 'rails', '4.1.6'
 gem 'sqlite3', group: :development
 gem 'pg', '0.18.1', group: :production
 gem 'rails_12factor', group: :production
+gem "bcrypt-ruby", :require => "bcrypt"
 
 gem 'pry-rails'
 # Use SCSS for stylesheets
