@@ -2,15 +2,16 @@ class OrdersController < ApplicationController
   def index
     @orders=Order.all
   end
-
   def new
-    @order=Order.new
+    @order=Order.new 
   end
 
   def create
-    @order=Order.new(order_params)
+    @items=current_user.carts.first.cart_details
+    @a=getsum(@items)
+    @order=current_user.orders.new(order_params)
     if @order.save
-      redirect_to @order
+      redirect_to 'orders'
     else
       render 'new'
     end
@@ -40,6 +41,16 @@ class OrdersController < ApplicationController
     @order=Order.find(params[:id])
   end
   def order_params
-    params.require(:order).permit(:date, :total_amount ,:shipping_address,:user_id)
+    params.require(:order).permit(:shipping_address).merge(total_amount: @a.to_i, date:Time.now.strftime("%m/%d/%Y"))
+  end
+
+  def getsum(items)
+      sum=0
+      @items.each do |item|
+      product = Product.find_by(id: item.product_id)
+
+      sum+= product.price*item.quantity
+      end
+      return sum.to_i
   end
 end

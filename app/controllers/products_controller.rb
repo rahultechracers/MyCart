@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
 
-
-
   def index
     @products=Product.all
+    @cart=current_user.carts
+
   end
 
   def new

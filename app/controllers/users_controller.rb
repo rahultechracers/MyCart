@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
   def create
     @user=User.new(user_params)
-
+    @user.encrypt_password
     if @user.save
       generate_cart(@user)
       redirect_to @user

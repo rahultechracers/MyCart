@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "log_in" => "session#new", :as => "log_in"
   
   get "sign_up" => "users#new", :as => "sign_up"
-  
+  get "cart"   => "carts#show"  ,:as =>"cart" 
   get 'cart_details/index'
 
   get 'cart_details/new'
@@ -14,9 +14,9 @@ Rails.application.routes.draw do
 
   get 'cart_details/destroy'
   post 'cart_details'=> 'cart_details#create'
-
-  get 'orders/show'
+  
   root 'products#index'
+  resources :orders, only: [ :create, :new, :show, :index ]
   resources :session
   resources :users
   resources :products
