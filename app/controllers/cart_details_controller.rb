@@ -7,8 +7,22 @@ class CartDetailsController < ApplicationController
 
   def show
   end
+  def edit
+    @cart_detail=CartDetail.find_by_id(params[:id])
+    @product=Product.find_by(id:@cart_detail.product_id)
+    
+  end
+  def update
+    @cart_detail=CartDetail.find_by_id(params[:id])
+    @cart_detail.update(quantity: params[:cart_detail][:quantity])
+    redirect_to cart_path
+  end
 
   def destroy
+    @item=CartDetail.find_by_id(params[:id])
+    if @item.destroy
+      redirect_to cart_path
+    end
   end
   def create
     if current_user

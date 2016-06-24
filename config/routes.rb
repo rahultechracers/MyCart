@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'transaction_details/new'
-
-  get 'transaction_details/show'
-
-  get 'transaction_details/index'
-
   get "log_out" => "session#destroy", :as => "log_out"
   
   get "log_in" => "session#new", :as => "log_in"
@@ -16,12 +10,10 @@ Rails.application.routes.draw do
   
   get 'cart_details/index'
 
-  get 'cart_details/new'
-
-  get 'cart_details/show'
-
-  get 'cart_details/destroy'
+  delete 'cart_details' => 'cart_details#destroy' ,:as=>'delete_cart_details'
   post 'cart_details'=> 'cart_details#create'
+  get 'cart_details/edit'=>  'cart_details#edit', :as =>"edit_cart_details"
+  put 'cart_details/update/:id'=>  'cart_details#update', :as =>"update_cart_details"
   
   root 'products#index'
   get 'order_details/order_id' => 'order_details#show', :as =>"show_order_details" 

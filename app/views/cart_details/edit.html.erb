@@ -1,0 +1,17 @@
+<h1>Edit CartDetails</h1>
+<h3> Update quantity</h3>
+<tr>
+  <td>Product name:<%=@product.name%></td>
+  <td>price:<%=@product.price%></td>
+  <td>current quantity: <%=@cart_detail.quantity%></td>
+  <%= form_for(@cart_detail, url: update_cart_details_path(id: @cart_detail.id), method: :put)  do |f|%>
+    <div>
+    <%= f.label :Update_quantity%><br>
+    <%= f.number_field :quantity%>
+    </div>
+    <div>
+      <br>
+      <%=f.submit %>
+    </div>
+  <%end%>
+</tr>

@@ -21,6 +21,9 @@
       <td><%=product.description%></td>
       <td><%=item.quantity%></td>
       <td><%=product.price%> </td>
+
+      <td><%=link_to "Remove from cart" ,delete_cart_details_path(id:item.id), method: :delete %>  </td>
+      <td><%=link_to "Update Quantity" ,edit_cart_details_path(id:item.id) %>  </td>
     </tr>
   <%end%>
 </tbody>

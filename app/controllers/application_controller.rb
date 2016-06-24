@@ -9,4 +9,14 @@ class ApplicationController < ActionController::Base
     def current_user
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
+
+    def getsum(items)
+      sum=0
+      @items.each do |item|
+      product = Product.find_by(id: item.product_id)
+
+      sum+= product.price*item.quantity
+      end
+      return sum.to_i
+  end
 end
