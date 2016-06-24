@@ -1,9 +1,20 @@
 <h1>Orders</h1>
 
 <table>
+  <thead>
+    <tr>
+      <th>Order_id</th>
+      <th>Amount</th>
+      <th>shipping_address</th>
+    </tr>
+  </thead>
   <% @orders.each do |f| %>
     <tr>
       <td><%=f.id%></td>
+      <td><%=f.date%></td>
+      <td><%=f.total_amount%></td>
+      <td><%=f.shipping_address%> </td>
+      <td><%= link_to 'show order details', show_order_details_path(order_id: f.id) %> </td>
     </tr>
     <%end%>
 </table>

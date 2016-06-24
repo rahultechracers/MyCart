@@ -25,4 +25,5 @@ class CartsController < ApplicationController
       end
       return sum.to_i
   end
+  
 end

@@ -1,0 +1,23 @@
+<h1>Orders Details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>quantity</th>
+      <th>price</th>
+      <th> order_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @od.each do |f| %>
+      <tr>
+        <td><%=f.product_id%></td>
+        <td><%=f.quantity%></td>
+        <td><%=f.price%></td>
+        <td><%=f.order_id%></td>
+      </tr>
+    <%end%>
+  </tbody>    
+</table>
+<%= button_to 'Make payment',transaction_details_path(order_id:@od.first.order_id)%> 

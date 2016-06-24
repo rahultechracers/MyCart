@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'transaction_details/new'
+
+  get 'transaction_details/show'
+
+  get 'transaction_details/index'
+
   get "log_out" => "session#destroy", :as => "log_out"
   
   get "log_in" => "session#new", :as => "log_in"
   
   get "sign_up" => "users#new", :as => "sign_up"
+  
   get "cart"   => "carts#show"  ,:as =>"cart" 
+  
   get 'cart_details/index'
 
   get 'cart_details/new'
@@ -16,10 +24,13 @@ Rails.application.routes.draw do
   post 'cart_details'=> 'cart_details#create'
   
   root 'products#index'
+  get 'order_details/order_id' => 'order_details#show', :as =>"show_order_details" 
+  resources :order_details, only: [:index]
   resources :orders, only: [ :create, :new, :show, :index ]
   resources :session
   resources :users
   resources :products
+  resources :transaction_details
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

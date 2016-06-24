@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates :password ,format: {with:/\A[a-zA-z0-9]+{6,}\z/, message:"Password should be alphanumeric and atleast 6 characters long"}
   #after_save :encrypt_password
 
+
   def self.authenticate(email, password)
     user = find_by_email(email)
     if user && user.password == Digest::MD5.hexdigest('password')
