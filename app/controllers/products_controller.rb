@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
   def index
     @products=Product.all
-    @cart=current_user.carts
+    @cart=current_user.carts if current_user
 
   end
 
