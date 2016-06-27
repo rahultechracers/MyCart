@@ -2,14 +2,11 @@
 
 <div>
   <h4>Select Category:</h4>
-  <select name="category_id">
-    <option value="all"> All</option>
-    <%= @categories.each do |category| %>
-        <option value="<%= category.id %>"><%= category.name %>      </option>
-    <% end %>
-  </select>
+  <%= form_tag products_path, method: "get" do %>
+  <%= select_tag "products" "category", options_for_select(@categories) %>
+  <%= submit_tag "Filter" %>
+<% end %>
 </div>
-
 <table>
   <thead>
     <tr>

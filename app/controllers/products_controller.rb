@@ -1,11 +1,17 @@
 class ProductsController < ApplicationController
 
-  def index
-    @products=Product.all
-    @categories=Category.all
+def index
+    if params[:category]
+      category=Category.find(params[:category])
+     # products.categories(to-fix)
+     @products=category.products
+    else
+      @products = Product.all
+    end
+    @categories=Category.all.map { |c| [c.name, c.id]}
     @cart=current_user.carts if current_user
 
-  end
+ end
 
   def new
     @product=Product.new
