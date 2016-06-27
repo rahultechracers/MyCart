@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 
   def index
     @products=Product.all
+    @categories=Category.all
     @cart=current_user.carts if current_user
 
   end

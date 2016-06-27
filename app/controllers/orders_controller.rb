@@ -13,10 +13,10 @@ class OrdersController < ApplicationController
     if @order.save
         @items.each do |item|  
         product=Product.find_by(id:item.product_id)
-       
-        @order.order_details.create(product_id: item.product_id, quantity: item.quantity ,price: product.price)  
+        order_detail = @order.order_details.create(product_id:product.id, quantity: item.quantity ,price: product.price)
+        current_user.carts.first.cart_details.find_by_product_id(item.product_id).destroy if order_detail.present?
       end
-      redirect_to '/orders'
+      redirect_to show_order_details_path(:order_id => @order.id)
     else
       render 'new'
     end

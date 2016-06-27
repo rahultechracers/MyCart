@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
     end
 
     def getsum(items)
+      
       sum=0
       @items.each do |item|
       product = Product.find_by(id: item.product_id)

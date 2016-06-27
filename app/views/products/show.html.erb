@@ -5,5 +5,5 @@
 <p><b>Image url:</b>     <%= @product.image_url %> </p>
 
 <p><b>Price: </b> <%= @product.price%></p>
-<%= button_to 'Add to Cart', cart_details_path(product_id: product) %>
+<%= button_to 'Add to Cart', cart_details_path(product_id: @product.id) %>
 <%= link_to 'Back', products_path %>

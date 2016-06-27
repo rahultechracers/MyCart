@@ -1,4 +1,7 @@
 class CartsController < ApplicationController
+
+  after_action :getsum , :only=> [:create,:destroy]
+
   def index
     @cart=carts.all
   end
