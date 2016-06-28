@@ -8,7 +8,7 @@ gem 'sqlite3', group: :development
 gem 'pg', '0.18.1', group: :production
 gem 'rails_12factor', group: :production
 gem "bcrypt-ruby", :require => "bcrypt"
-
+gem 'will_paginate', '~> 3.0'
 gem 'pry-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

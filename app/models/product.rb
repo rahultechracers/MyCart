@@ -7,4 +7,13 @@ class Product < ActiveRecord::Base
   validates :price ,numericality: { greater_than_or_equal_to: 0.01 }
   validates :image_url, allow_blank: true, format: {with: %r{\.(gif|jpg|png|jpeg)\z}i,
       message: 'URL must point to gif/jpg/png/jpeg pictures'}
+
+def self.search(search)
+  if search
+    where('name LIKE ?', "%#{search}%")
+  else
+    self.all
+  end
+end
+
 end
