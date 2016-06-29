@@ -3,29 +3,37 @@
 <head>
   <title>MyCart</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
   <%= csrf_meta_tags %>
 </head>
 <body>
-      <div id="user_nav">
-        <% if current_user %>
-          Logged in as <%= current_user.email %>.
-          <%= link_to "Cart", cart_path %>
-          <%= link_to "Log out", log_out_path %>
-          
-        <% else %>
-          <%= link_to "Sign up", sign_up_path %> or
-          <%= link_to "log in", log_in_path %>
-        <% end %>
+  <nav class="navbar navbar-inverse">
+    <div id="user_nav">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h2 class="logo"> MyCart</h2>
+        </div>
+        <div class="collapse navbar-collapse top-nav" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              Logged in as <%= current_user.email %>.
+              <li><%= link_to "Cart", cart_path %></li>
+              <li><%= link_to "Log out", log_out_path %></li>
+            <% else %>
+              <li><%= link_to "Sign up", sign_up_path %></li>
+              <li><%= link_to "log in", log_in_path %></li>
+            <% end %>                
+          </ul>
+        </div>
+      </div>
     </div>
-
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
-
-    <%= yield %>
-
+  </nav>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+  <%= yield %>
 </body>
 </html>

@@ -1,13 +1,19 @@
-<h1>Listing products</h1>
 
-<div id="products_search">
-  <%= form_tag products_path, :method => 'get', :id => "products_search" do %>
-    <p>
-      <%= text_field_tag :search, params[:search], :id=> "1" %>
-      <%= submit_tag "Search", :name => nil %>
-    </p>   
-  <% end %>
-</div> 
+<div>
+  <ul class="list-inline">
+    <li><h3>Listing products</h3></li>
+    <li class ="pull-right">
+      <div id="products_search" class="navbar-form navbar-left">
+        <%= form_tag products_path, :method => 'get', :id => "products_search" ,remote: true do %>
+          <p>
+            <%= text_field_tag :search, params[:search], :id=> "1" %>
+            <%= submit_tag "Search", :name => nil %>
+          </p>   
+        <% end %>
+      </div>
+    </li>
+  </ul>
+</div>
 
 
 <div>
@@ -19,7 +25,9 @@
 </div>
 <div id="products"><%= render 'products' %></div>
 <br>
+<ul class="pager">
 <%= will_paginate @products %>
+</ul>
 <% if current_user.present?&& current_user.role="admin"%>
 <%= link_to 'New Product', new_product_path %>
  <%end%>

@@ -21,10 +21,9 @@ $(function() {
   })
 });
 
-$(document).ready(function(){
-  $("#products_search input").keyup(function() {
-    alert("");
-      $.get($("#products_search").attr("action"), 
-      $("#products_search").serialize(), null, "script");
-    })
-});
+// $(document).ready(function(){
+//   $("#products_search input").onkeyup(function() {
+//       $.get($("#products_search").attr("action"),key=13
+//       $("#products_search").serialize(), null, "script");
+//     })
+// });

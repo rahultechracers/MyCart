@@ -3,7 +3,7 @@
 <%#= will_paginate @products %>
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
-<table class="product_list">
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th><%= sortable "name"%></th>
@@ -22,9 +22,9 @@
         <td><%= product.image_url %></td>
         <td><%= product.price %></td>
         <%if current_user.present? %>
-          <td><%= button_to 'Add to Cart', cart_details_path(product_id: product,cart_id: @cart.first.id) %><td>
+          <td><%= button_to 'Add to Cart', cart_details_path(product_id: product,cart_id: @cart.first.id), class: "btn btn-primary" %><td>
         <%else%>
-          <td><%= button_to 'Add to Cart', log_in_path, method: :get  %><td>
+          <td><%= button_to 'Add to Cart', log_in_path, method: :get, class: "btn btn-primary"  %><td>
              <%flash[:notice] = "please Login First to save your cart details"%>
         <%end%>
 
